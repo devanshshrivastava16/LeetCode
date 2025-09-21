@@ -1,0 +1,55 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        return new int[]{firstElement(nums,target),lastElement(nums,target)};
+    }
+    int firstElement(int nums[],int target)
+    {
+        int left=0;
+        int right=nums.length-1;
+        int first=-1;
+        int mid;
+        while(left<=right)
+        {
+            mid=left+(right-left)/2;
+            if(nums[mid]==target)
+            {
+                first=mid;
+                right=mid-1;
+            }
+            else if(nums[mid]<target)
+            {
+                left=mid+1;
+            }
+            else
+            {
+                right=mid-1;
+            }
+        }
+        return first;
+    }
+    int lastElement(int nums[],int target)
+    {
+        int left=0;
+        int right=nums.length-1;
+        int last=-1;
+        int mid;
+        while(left<=right)
+        {
+            mid=left+(right-left)/2;
+            if(nums[mid]==target)
+            {
+                last=mid;
+                left=mid+1;
+            }
+            else if(nums[mid]<target)
+            {
+                left=mid+1;
+            }
+            else
+            {
+                right=mid-1;
+            }
+        }
+        return last;
+    }
+}
